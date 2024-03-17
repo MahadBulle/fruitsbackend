@@ -15,7 +15,7 @@ const Login = async (req, res) =>{
 
     const token = jwt.sign({email:user.email,id:user._id,Roles:user.role},process.env.PRIVATE_KEY,{expiresIn:'1h'})
 
-    return res.status(200).send({Token:token,User:user.username +' '+'Loged in'})
+    return res.status(200).send({Token:token,User:user.username +' '+'Loged in',username: user.username})
     } catch (error) {
         res.status(401).send(error.message)
         
